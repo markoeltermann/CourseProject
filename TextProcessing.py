@@ -1,4 +1,6 @@
 import nltk
+import numpy
+import collections
 from os import listdir
 from nltk.stem import WordNetLemmatizer
 
@@ -64,3 +66,20 @@ for bag in bags:
 
 print(sum(count > 1 for count in combined_bag.values()))
 print(sorted(combined_bag.items(), key=lambda pair: pair[1], reverse=True))
+
+
+occurence_in_doc = dict()
+for word in combined_bag:
+    count = 0
+    for bag in bags:
+        if word in bag:
+            count = count + 1
+    occurence_in_doc[word] = count
+
+
+print()
+print()
+print("Occurences")
+print(occurence_in_doc)
+
+
