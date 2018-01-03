@@ -93,7 +93,7 @@ print(sorted(combined_bag.items(), key=lambda pair: pair[1], reverse=False))
 
 word_list = []
 for word in combined_bag:
-    if occurences[word] > 1:
+    if occurences[word] > 2 and occurences[word] < 64:
         word_list.append(word)
 
 #word_ranks = []
@@ -135,9 +135,33 @@ for i in range(0, len(word_list)):
 print(sorted(word_std.items(), key=lambda pair: pair[1], reverse=False))
 
 allowed_words = set()
-#for word, std in word_std.items():
-#    if std
+for word in word_list:
+    allowed_words.add(word)
+
+for wikidata_file in wikidata_files:
+    if wikidata_file.endswith('.txt'):
+        with open('./wikidata/' + wikidata_file, 'r', encoding='utf-8') as text_file:
+            text = text_file.read()
+        tokens = nltk.word_tokenize(text)
+        pos_tags = nltk.pos_tag(tokens, 'universal')
+        lemmatized_nouns_and_adverbs = map(
+            lambda pair: lemmatizer.lemmatize(pair[0], universal_word_type_to_wordnet(pair[1])),
+            filter(lambda pair: (pair[1] == 'NOUN' or pair[1] == 'ADJ') and len(pair[0]) > 1, pos_tags))
+        bag_of_words = dict()
+        words_to_write = []
+        for word in lemmatized_nouns_and_adverbs:
+            if word == 'landscape':
+                print(str(word in allowed_words))
+                #time.sleep(5)
+            if word in allowed_words:
+                words_to_write.append(word)
+        with open('./mallet_train/' + wikidata_file, 'w', encoding='utf-8') as out_file:
+            for word in words_to_write:
+                out_file.write(" " + word)
 
 
 
-
+print(occurences["landscape"])
+print(occurences["landscapes"])
+print(occurences["art"])
+print(occurences["painting"])

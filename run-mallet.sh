@@ -2,10 +2,10 @@
 
 source env.sh
 
-rm -rf mallet_train
-mkdir mallet_train
+#rm -rf mallet_train
+#mkdir mallet_train
 
-cp wikidata_train/*.txt mallet_train/
+#cp wikidata_train/*.txt mallet_train/
 
 $MALLET_HOME/bin/mallet import-dir \
 	--input mallet_train/ \
