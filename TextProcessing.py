@@ -5,7 +5,7 @@ import time
 from os import listdir
 from nltk.stem import WordNetLemmatizer
 
-wikidata_files = listdir('./wikidata/')
+wikidata_files = listdir('./wikidata_train/')
 
 i = 0
 
@@ -25,7 +25,7 @@ bags = list()
 
 for wikidata_file in wikidata_files:
     if wikidata_file.endswith('.txt'):
-        with open('./wikidata/' + wikidata_file, 'r', encoding='utf-8') as text_file:
+        with open('./wikidata_train/' + wikidata_file, 'r', encoding='utf-8') as text_file:
             text = text_file.read()
         tokens = nltk.word_tokenize(text)
         # tokens = map(lemmatizer.lemmatize())
@@ -93,7 +93,7 @@ print(sorted(combined_bag.items(), key=lambda pair: pair[1], reverse=False))
 
 word_list = []
 for word in combined_bag:
-    if occurences[word] > 2 and occurences[word] < 64:
+    if occurences[word] > 2 and occurences[word] < 51:
         word_list.append(word)
 
 #word_ranks = []
@@ -140,7 +140,7 @@ for word in word_list:
 
 for wikidata_file in wikidata_files:
     if wikidata_file.endswith('.txt'):
-        with open('./wikidata/' + wikidata_file, 'r', encoding='utf-8') as text_file:
+        with open('./wikidata_train/' + wikidata_file, 'r', encoding='utf-8') as text_file:
             text = text_file.read()
         tokens = nltk.word_tokenize(text)
         pos_tags = nltk.pos_tag(tokens, 'universal')
@@ -162,6 +162,6 @@ for wikidata_file in wikidata_files:
 
 
 print(occurences["landscape"])
-print(occurences["landscapes"])
+#print(occurences["landscape"])
 print(occurences["art"])
 print(occurences["painting"])
