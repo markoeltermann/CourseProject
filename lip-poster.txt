@@ -1,0 +1,34 @@
+Goal
+----
+
+Data extraction
+---------------
+
+Topic Model Training
+--------------------
+For preprocessing the training data Python Natural Language Toolkit [1] was used. Sentences from the wikipedia articles corresponding to the images were tokenized. After POS-tagging only adjectives and nouns were lemmataized and kept. General tokens that were common for the entire data set were manually removed ("art", "landscape", "painting"). Also tokens that were represented in less than 2 documents were removed. Remaining tokens were reformalized into documents linked to the initial images. Using MALLET [2] (tool implementing Gibbs sampling [3]) was used to train 10 topic. For each training images the topic with the heighest weight was assigned.
+
+Resulting Topic Models
+----------------------
+century time part event history important colour contemporary world contrast natural end painter dramatic urban reflection feature scene result presence 
+year work time collection oil life exhibition part public man collector quality summer gallery piece field inch long woman model 
+tree sky canvas view composition death hill picture shape location foreground green dark branch oil left pine town oak symbol 
+work sketch mountain study great friend road peak men land foot village animal natural sheep scale high wagon plain trip 
+city sun church building king detail original tower circle low today area historical source phenomenon southern dog island horizon structure 
+work form group nature element large style technique order color historian period modern background broad thing idea process spirit classical 
+perspective subject view movement space dimension canvas position point critic multiple representation moment bridge aspect matter object personal concept fact 
+foreground water river light side series single lake red top shore point spring eye visible picture day aesthetic center ancient 
+painter early scene late subject version house cloud studio small theme major place period tradition van number depiction figure religious 
+color winter light snow shadow effect large popular series blue white air paint nature member cold weather interest theory black 
+
+
+Conclusion
+----------
+
+
+
+References
+----------
+[1] Python Natural Language Toolkit: http://www.nltk.org/
+[2] MAchine Learning for LanguagE Toolkit (MALLET): http://mallet.cs.umass.edu/topics.php
+[3] S. Geman and D. Geman, "Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoration of Images," in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. PAMI-6, no. 6, pp. 721-741, Nov. 1984. doi: 10.1109/TPAMI.1984.4767596
