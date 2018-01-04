@@ -6,7 +6,7 @@ Data extraction
 
 Topic Model Training
 --------------------
-For preprocessing the training data Python Natural Language Toolkit [1] was used. Sentences from the Wikipedia articles corresponding to the images were tokenized. After POS-tagging only adjectives and nouns were lemmatized and kept. General tokens that were common for the entire data set were manually removed ("art", "landscape", "painting"). Also tokens that were represented in less than 2 documents were removed. Remaining tokens were formalized into documents linked to the initial images. Using MALLET [2] (tool implementing Gibbs sampling [3]) was used to train 10 topic. For each training images the topic with the highest weight was assigned.
+For preprocessing the training data Python Natural Language Toolkit [1] was used. Sentences from the Wikipedia articles corresponding to the images were tokenized. After POS-tagging only adjectives and nouns were lemmatized and kept. General tokens that were common for the entire data set were manually removed ("art", "landscape", "painting"). Also tokens that were represented in less than 2 documents were removed. Remaining tokens were formalized into documents linked to the initial images. MALLET [2] (tool implementing Gibbs sampling [3]) was used to train 10 topic. For each training images the topic with the highest weight was assigned.
 
 Resulting Topic Models
 ----------------------
